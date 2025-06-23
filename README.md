@@ -1,61 +1,108 @@
-﻿# mlops-kubernetes-task
+# MLOps Kubernetes Task
 
+This project demonstrates a microservices-based web application with user authentication, containerized using Docker, and orchestrated using Kubernetes on Minikube.
 
-1.	Architecture Diagram
+---
 
-•	Frontend Service: A responsive, user-friendly UI for user interactions.
-•	Backend Service: An API-driven backend for handling user requests, authentication, and communication with the database.
-•	Database Service: Store user data and authentication details.
+## 🧱 Architecture Overview
 
+* **Frontend Service:** React-based UI for user interaction
+* **Backend Service:** Node.js/Express API handling user requests and authentication
+* **Database Service:** PostgreSQL for storing user data and authentication details
 
+---
 
-2.	User Authentication Module
+## 🔐 User Authentication Module
 
-•	Signup: Allow users to register.
-•	Login: Enable users to log in.
-•	Forgot Password: Provide password reset functionality.
+* **Signup:** Register new users
+* **Login:** Authenticate users
+* **Forgot Password:** Reset user password via email/token
 
+---
 
-3.	Technology Stack
+## 🛠 Technology Stack
 
-•	Frontend: React
-•	Backend: Node.js (Express)
-•	Database: PostgreSQL
-•	Authentication: JWT (JSON Web Tokens)
+| Layer    | Technology            |
+| -------- | --------------------- |
+| Frontend | React                 |
+| Backend  | Node.js (Express)     |
+| Database | PostgreSQL            |
+| Auth     | JWT (JSON Web Tokens) |
 
+---
 
-4.	Containerization (Docker)
+## 🐳 Containerization (Docker)
 
-•	Dockerfiles: Create individual Dockerfiles for each service (Frontend, Backend, Database, Authentication).
-•	Docker Compose: Define and run a multi-container Docker application.
+* **Dockerfiles:**
 
+  * `frontend/Dockerfile`
+  * `backend/Dockerfile`
+  * `database/Dockerfile`
+* **Docker Compose:**
 
-5.	Orchestration and Deployment with Kubernetes
+  * Multi-container setup with `docker-compose.yml`
 
-•	Kubernetes Deployment and Service YAML files: Define YAML files for each microservice.
-•	Pods: Manage individual services and ensure they communicate effectively.
-•	Expose the frontend service: Allow it to be accessible through a NodePort or LoadBalancer on Minikube.
-•	Replicas: Maintain 3 replicas for each pod.
+---
 
+## ☸️ Orchestration & Deployment (Kubernetes)
 
-6.	Implementation
+* **Kubernetes YAMLs:**
 
-•	Frontend Service (React)
-Create a React application.
+  * Deployment and Service files for each microservice
+* **Minikube Setup:**
 
-•	Backend Service (Node.js with Express)
-Create an Express Application.
-Implement API endpoints: Create routes for Signup, Login, and Forgot Password.
- 
-•	Database Service (MongoDB)
+  * Expose frontend via `NodePort` or `LoadBalancer`
+* **Pods & Replicas:**
 
-•	Backend Service (Node.js with Express)
-Create Dockerfiles for each service: frontend/Dockerfile, backend/Dockerfile, Docker-compose.yml
+  * Each service runs in pods with **3 replicas**
 
-•	Kubernetes Deployment
-Create Kubernetes YAML files (shown in GitHub)
+---
 
-•	Deploy on Minikube
-Start Minikube
-Build and push Docker images                                     
-Apply Kubernetes configurations
+## 🚀 Implementation Steps
+
+1. **Frontend (React)**
+
+   * Create responsive UI components
+
+2. **Backend (Node.js + Express)**
+
+   * Implement APIs: `/signup`, `/login`, `/forgot-password`
+
+3. **Database (PostgreSQL)**
+
+   * Setup schema for users & tokens
+
+4. **Dockerize Each Service**
+
+   * Build separate Dockerfiles
+   * Use `docker-compose` for local development
+
+5. **Kubernetes Deployment**
+
+   * Apply YAML files for pods, services, and replicas
+   * Deploy on Minikube
+
+6. **Start Minikube & Apply Configs**
+
+   * Build & push Docker images
+   * Apply Kubernetes configurations using `kubectl`
+
+---
+
+## 📁 Project Structure (Simplified)
+
+```
+mlops-kubernetes-task/
+├── backend/
+│   └── Dockerfile
+├── frontend/
+│   └── Dockerfile
+├── database/
+│   └── init.sql
+├── docker-compose.yml
+├── k8s/
+│   ├── frontend-deployment.yaml
+│   ├── backend-deployment.yaml
+│   └── postgres-deployment.yaml
+└── README.md
+```
